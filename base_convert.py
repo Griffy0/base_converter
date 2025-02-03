@@ -7,8 +7,6 @@ def highest_pow(x):
 
 def iter_loop(x, bin, last):
     highest = highest_pow(x)
-    if last == highest:
-        highest -=1
     remainder = x-2**highest
     if (last-highest > 0):
         bin = bin + (['0']*(last-highest-1))
@@ -20,9 +18,12 @@ def iter_loop(x, bin, last):
 
 def iter_loop_wrapper(x):
     bin=[]
+    if (x == 0):
+        return '0'
+    if (x == 1):
+        return '1'
     out = iter_loop(x, bin, highest_pow(x)+1)
     out.append(str(x%2))
-    #print(out)
     return ''.join(out)
 
 to_convert = int(input())
